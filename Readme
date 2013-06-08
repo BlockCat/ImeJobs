@@ -3,7 +3,8 @@ ItemStones have ids: AA0000;
 Ids: AA0000 to AA1000, are reserved for job stones.
 p.s.: there are 6,760,000 different ids to use. 
 
-yml:
+config:
+"
 ID(AA0000):
   name: ''
   lore:
@@ -18,6 +19,6 @@ ID(AA0000):
   rewards:
   - p:permission.node
   - a:Ability
-  
+"  
 Ability Types:
 HEALTH: adds +2 health for each stone.
