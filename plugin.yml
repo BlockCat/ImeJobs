@@ -1,0 +1,6 @@
+name: ImeJobs
+main: me.blockcat.ImeJobs
+version: 1
+commands:
+  ij:
+  

@@ -1,0 +1,23 @@
+ItemStones will grant you: permissions or abilities.
+ItemStones have ids: AA0000;
+Ids: AA0000 to AA1000, are reserved for job stones.
+p.s.: there are 6,760,000 different ids to use. 
+
+yml:
+ID(AA0000):
+  name: ''
+  lore:
+  - ''
+  - ''
+  - ''
+  requirements:
+  - p:permission.node
+  - -p:must.not.have.permission.node
+  - a:ID(AA0000)
+  - -a:ID(AA0000) must not have the id.
+  rewards:
+  - p:permission.node
+  - a:Ability
+  
+Ability Types:
+HEALTH: adds +2 health for each stone.
