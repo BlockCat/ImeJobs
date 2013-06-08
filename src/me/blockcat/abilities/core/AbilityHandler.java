@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 
 import me.blockcat.abilities.Ability;
 import me.blockcat.abilities.HealthAbility;
+import me.blockcat.abilities.ManaAbility;
 import me.blockcat.abilities.anotation.ImeEvent;
 import me.blockcat.abilities.anotation.Wrapper;
 
@@ -59,8 +60,7 @@ public class AbilityHandler {
 	}
 	
 	public enum AbilityShop {
-		HEALTH(HealthAbility.class);
-		
+		HEALTH(HealthAbility.class), MANA(ManaAbility.class);
 		private Class<? extends Ability> handler;
 		AbilityShop(Class<? extends Ability> handler) {
 			this.handler = handler;
