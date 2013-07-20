@@ -26,22 +26,20 @@ public class InventoryListener implements Listener {
 	@EventHandler
 	public void onInventoryOpen (InventoryOpenEvent event) {
 		if (!event.getInventory().getName().equalsIgnoreCase("Level-slate: " + event.getPlayer().getName())) return;
-		
+
 		int maxSlots = 6;
 		try {
 			Quester quester = ((Quests)Bukkit.getPluginManager().getPlugin("Quests")).getQuester(event.getPlayer().getName());
 			int qp = quester.getBaseData().getInt("quest-points");
-			if (qp % 10 == 0) {
-				maxSlots = 6 + (qp/10);
-				int sl = Integer.parseInt(ImeJobs.getPlugin().playerData.getData(event.getPlayer().getName()).getEntry("maxSlots"));
-				maxSlots = (maxSlots >= 54) ? 54 : maxSlots;
-				if (maxSlots > sl) {
-					//got slots added!
-				} else if (maxSlots < sl) {
-					
-				}
-				ImeJobs.getPlugin().playerData.getData(event.getPlayer().getName()).setEntry("maxSlots", maxSlots + "");
+			maxSlots = 6 + (int)(qp/10);
+			int sl = Integer.parseInt(ImeJobs.getPlugin().playerData.getData(event.getPlayer().getName()).getEntry("maxSlots"));
+			maxSlots = (maxSlots >= 54) ? 54 : maxSlots;
+			if (maxSlots > sl) {
+				//got slots added!
+			} else if (maxSlots < sl) {
+
 			}
+			ImeJobs.getPlugin().playerData.getData(event.getPlayer().getName()).setEntry("maxSlots", maxSlots + "");
 		} catch(Exception e) {
 			maxSlots = Integer.parseInt(ImeJobs.getPlugin().playerData.getData(event.getPlayer().getName()).getEntry("maxSlots"));
 		}
@@ -80,7 +78,7 @@ public class InventoryListener implements Listener {
 			event.setCancelled(true);
 			return;
 		}
-		
+
 		SlotItem si = null;
 
 		//check if the player has the requirements...
@@ -133,7 +131,7 @@ public class InventoryListener implements Listener {
 			}
 			//release the block
 			if (event.getCursor().getType() != Material.AIR) {
-				int state = ImeJobs.getPlugin().playerData.getData(player.getName()).direction;
+				//int state = ImeJobs.getPlugin().playerData.getData(player.getName()).direction;
 				if (si == null) return;
 				//place the block up
 				if (event.getRawSlot() < 54) {
@@ -146,7 +144,7 @@ public class InventoryListener implements Listener {
 					//throw event
 					ItemSlateEvent customEvent = new ItemSlateEvent(player, Click.ADD, si, slotItems);
 					Bukkit.getServer().getPluginManager().callEvent(customEvent);
-					
+
 					si.addPermission(player);
 					return;
 				}
@@ -164,7 +162,7 @@ public class InventoryListener implements Listener {
 					 * So if a player takes from top, puts it back, takes it, put it back. he can easily get unlimited health... and that sucks.
 					 * 
 					 */
-					
+
 					ItemSlateEvent customEvent = new ItemSlateEvent(player, Click.REMOVE, si, slotItems);
 					Bukkit.getServer().getPluginManager().callEvent(customEvent);
 
@@ -182,7 +180,7 @@ public class InventoryListener implements Listener {
 
 		Player player = (Player) event.getPlayer();
 		int maxSlots = Integer.parseInt(ImeJobs.getPlugin().playerData.getData(player.getName()).getEntry("maxSlots"));
-		
+
 		for (int i = 53; i > maxSlots; i--) {
 			event.getInventory().setItem(i, new ItemStack(Material.AIR));
 		}
@@ -190,7 +188,7 @@ public class InventoryListener implements Listener {
 		String invString = InventoryString.InvToString(event.getInventory());
 
 		ImeJobs.getPlugin().playerData.getData(player.getName()).setEntry("invString", invString);
-		
+
 		List<SlotItem> slots = InventoryString.getSlotItemsFromString(invString);
 
 		for (SlotItem si : slots) {

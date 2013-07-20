@@ -6,8 +6,11 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import me.blockcat.abilities.Ability;
+import me.blockcat.abilities.BerserkAbility;
 import me.blockcat.abilities.HealthAbility;
+import me.blockcat.abilities.JumpAbility;
 import me.blockcat.abilities.ManaAbility;
+import me.blockcat.abilities.ShieldAbility;
 import me.blockcat.abilities.anotation.ImeEvent;
 import me.blockcat.abilities.anotation.Wrapper;
 
@@ -61,7 +64,10 @@ public class AbilityHandler {
 	
 	public enum AbilityShop {
 		HEALTH(HealthAbility.class), 
-		MANA(ManaAbility.class);
+		MANA(ManaAbility.class),
+		BERSERK(BerserkAbility.class),
+		SHIELD(ShieldAbility.class),
+		JUMP(JumpAbility.class);
 		
 		private Class<? extends Ability> handler;
 		

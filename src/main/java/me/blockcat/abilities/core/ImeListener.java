@@ -5,9 +5,11 @@ import me.blockcat.events.ItemSlateEvent;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
 public class ImeListener implements Listener{
 
@@ -32,6 +34,14 @@ public class ImeListener implements Listener{
 	
 	@EventHandler
 	public void onPlayerLogin (PlayerLoginEvent event) {
+		ImeJobs.abHandler.executeEvent(event);
+	}
+	@EventHandler
+	public void onPlayerRespawn(PlayerRespawnEvent event) {
+		ImeJobs.abHandler.executeEvent(event);
+	}
+	@EventHandler
+	public void onEntityDamagedByEntity(EntityDamageByEntityEvent event) {
 		ImeJobs.abHandler.executeEvent(event);
 	}
 }
