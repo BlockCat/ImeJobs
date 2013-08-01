@@ -197,7 +197,6 @@ public class InventoryListener implements Listener {
 	}
 
 	private boolean canClick(int clickedSlot, int maxSlots) {
-		System.out.println(clickedSlot);
 		return (clickedSlot < maxSlots || clickedSlot > 53) && clickedSlot >= 0;
 	}
 
